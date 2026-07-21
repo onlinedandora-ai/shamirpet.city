@@ -5,7 +5,7 @@ import { HighlightsGrid } from '../components/HighlightsGrid';
 import { ListingCard } from '../components/ListingCard';
 import { ArticleCard } from '../components/ArticleCard';
 import { DIRECTORY_LISTINGS, JOURNAL_ARTICLES } from '../data/mockData';
-import { Building2, BookOpen, ArrowRight, ShieldCheck, MapPin, Sparkles, Calendar, ChevronRight, ExternalLink } from 'lucide-react';
+import { Building2, BookOpen, ArrowRight, ShieldCheck, MapPin, Calendar, ChevronRight, ExternalLink } from 'lucide-react';
 
 interface HomePageProps {
   onSelectListing: (listing: any) => void;
@@ -117,8 +117,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectListing, onOpenSubmi
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-8 space-y-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">
                   <span>Bio-Pharma & Growth Corridor Brief</span>
                 </div>
 

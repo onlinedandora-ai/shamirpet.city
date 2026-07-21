@@ -8,13 +8,30 @@ interface ListingCardProps {
 }
 
 export const ListingCard: React.FC<ListingCardProps> = ({ listing, onSelect }) => {
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'Real Estate & Developers':
+        return 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/25';
+      case 'Life Sciences / Biotech Employers':
+        return 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/25';
+      case 'Education':
+        return 'bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/25';
+      case 'Healthcare':
+        return 'bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/25';
+      case 'Hospitality & Food':
+        return 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/25';
+      default:
+        return 'bg-teal-500/10 text-teal-700 dark:text-teal-300 border-teal-500/25';
+    }
+  };
+
   return (
     <div
       onClick={() => onSelect && onSelect(listing)}
       className={`group relative flex flex-col justify-between p-6 rounded-2xl bg-white dark:bg-slate-900 border transition-all duration-300 card-hover-effect cursor-pointer ${
         listing.isSponsored
           ? 'border-amber-400/60 dark:border-amber-500/50 shadow-md ring-1 ring-amber-400/20'
-          : 'border-slate-200 dark:border-slate-800'
+          : 'border-slate-200/90 dark:border-slate-800/90 hover:border-teal-500/40 dark:hover:border-teal-400/40'
       }`}
     >
       {/* Top Meta Bar */}
@@ -22,7 +39,7 @@ export const ListingCard: React.FC<ListingCardProps> = ({ listing, onSelect }) =
         <div className="flex items-start justify-between gap-3 mb-3">
           
           <div className="flex flex-wrap items-center gap-2">
-            <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20">
+            <span className={`px-2.5 py-1 rounded-full text-[11px] font-bold border ${getCategoryColor(listing.category)}`}>
               {listing.category}
             </span>
             

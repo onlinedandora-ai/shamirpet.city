@@ -4,7 +4,7 @@ import { DIRECTORY_LISTINGS } from '../data/mockData';
 import type { DirectoryListing } from '../data/mockData';
 import { ListingCard } from '../components/ListingCard';
 import { MapView } from '../components/MapView';
-import { Search, Map, LayoutGrid, Filter, PlusCircle, Building2, MapPin, Sparkles } from 'lucide-react';
+import { Search, Map, LayoutGrid, Filter, PlusCircle, Building2, MapPin } from 'lucide-react';
 
 interface DirectoryPageProps {
   onSelectListing: (listing: DirectoryListing) => void;
@@ -161,9 +161,6 @@ export const DirectoryPage: React.FC<DirectoryPageProps> = ({ onSelectListing, o
                     : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-teal-500'
                 }`}
               >
-                {cat === 'Life Sciences / Biotech Employers' && (
-                  <Sparkles className="w-3 h-3 inline mr-1 text-purple-400" />
-                )}
                 {cat}
               </button>
             ))}

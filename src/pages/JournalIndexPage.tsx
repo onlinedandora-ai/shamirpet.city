@@ -39,19 +39,27 @@ export const JournalIndexPage: React.FC = () => {
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             
             <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1">
-              {categories.map(c => (
-                <button
-                  key={c}
-                  onClick={() => setSelectedCat(c)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
-                    selectedCat === c
-                      ? 'bg-teal-600 text-white shadow-md'
-                      : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-teal-500'
-                  }`}
-                >
-                  {c}
-                </button>
-              ))}
+              {categories.map(c => {
+                const isSelected = selectedCat === c;
+                let activeBgClass = 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md shadow-teal-500/20';
+                if (c === 'Real Estate') activeBgClass = 'bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-md shadow-indigo-500/20';
+                if (c === 'Civic') activeBgClass = 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-500/20';
+                if (c === 'Education') activeBgClass = 'bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md shadow-sky-500/20';
+
+                return (
+                  <button
+                    key={c}
+                    onClick={() => setSelectedCat(c)}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
+                      isSelected
+                        ? activeBgClass
+                        : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-teal-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                    }`}
+                  >
+                    {c}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="relative w-full sm:w-72">

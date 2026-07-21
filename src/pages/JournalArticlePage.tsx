@@ -23,6 +23,19 @@ export const JournalArticlePage: React.FC = () => {
     }
   };
 
+  const getCategoryBadgeStyle = (category: string) => {
+    switch (category) {
+      case 'Real Estate':
+        return 'bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border-indigo-500/30';
+      case 'Civic':
+        return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30';
+      case 'Education':
+        return 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30';
+      default:
+        return 'bg-teal-500/15 text-teal-700 dark:text-teal-300 border-teal-500/30';
+    }
+  };
+
   return (
     <div className="py-10 bg-white dark:bg-slate-900 transition-colors duration-300 min-h-screen">
       
@@ -42,7 +55,7 @@ export const JournalArticlePage: React.FC = () => {
         {/* Category & Date */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-md text-xs font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20">
+            <span className={`px-3 py-1 rounded-md text-xs font-bold border ${getCategoryBadgeStyle(article.category)}`}>
               {article.category}
             </span>
             <span className="text-xs text-slate-500 flex items-center gap-1">

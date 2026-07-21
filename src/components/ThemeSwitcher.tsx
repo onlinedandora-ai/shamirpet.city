@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { Sun, Moon, Sparkles, Palette } from 'lucide-react';
+import { Sun, Moon, Palette } from 'lucide-react';
 
 export const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme, setTheme } = useTheme();
@@ -67,8 +67,7 @@ export const ThemeSwitcher: React.FC = () => {
             <span>Dark Mode</span>
           </button>
 
-          <div className="pt-2 mt-1 border-t border-slate-200 dark:border-slate-800 text-[10px] text-slate-500 px-2 flex items-center gap-1">
-            <Sparkles className="w-3 h-3 text-teal-500" />
+          <div className="pt-2 mt-1 border-t border-slate-200 dark:border-slate-800 text-[10px] text-slate-500 px-2">
             <span>Live theme synced</span>
           </div>
         </div>

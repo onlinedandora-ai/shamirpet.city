@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, PlusCircle, Menu, X, MapPin, Sparkles } from 'lucide-react';
+import { Search, PlusCircle, Menu, X, MapPin } from 'lucide-react';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 interface NavbarProps {
@@ -39,9 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenSubmitListin
               <div className="flex items-center gap-1.5">
                 <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                   shamirpet<span className="text-teal-600 dark:text-teal-400">.city</span>
-                </span>
-                <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20">
-                  Exit 7
                 </span>
               </div>
               <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 hidden sm:inline-flex items-center gap-1">
@@ -123,7 +120,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenSubmitListin
                 {link.name}
               </Link>
             ))}
-            <div className="pt-3 mt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+            <div className="pt-3 mt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-3">
+              <div className="flex items-center justify-between px-3 py-2 bg-slate-100 dark:bg-slate-800/60 rounded-xl">
+                <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  Theme Appearance
+                </span>
+                <ThemeSwitcher />
+              </div>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -134,8 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSearch, onOpenSubmitListin
                 <PlusCircle className="w-4 h-4" />
                 <span>Add Your Business</span>
               </button>
-              <div className="flex items-center gap-1 text-xs text-slate-500 justify-center pt-1">
-                <Sparkles className="w-3 h-3 text-teal-500" />
+              <div className="flex items-center text-xs text-slate-500 justify-center pt-1">
                 <span>Telangana Growth Corridor Network</span>
               </div>
             </div>

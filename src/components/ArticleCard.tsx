@@ -8,8 +8,23 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+  const getCategoryBadgeStyle = (category: string) => {
+    switch (category) {
+      case 'Real Estate':
+        return 'bg-indigo-600/90 text-indigo-100 border-indigo-400/30 shadow-indigo-500/20';
+      case 'Civic':
+        return 'bg-emerald-600/90 text-emerald-100 border-emerald-400/30 shadow-emerald-500/20';
+      case 'Education':
+        return 'bg-sky-600/90 text-sky-100 border-sky-400/30 shadow-sky-500/20';
+      case 'Industry & Economy':
+        return 'bg-amber-600/90 text-amber-100 border-amber-400/30 shadow-amber-500/20';
+      default:
+        return 'bg-teal-600/90 text-teal-100 border-teal-400/30 shadow-teal-500/20';
+    }
+  };
+
   return (
-    <article className="group flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden card-hover-effect">
+    <article className="group flex flex-col justify-between rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/90 overflow-hidden card-hover-effect shadow-sm hover:shadow-xl hover:border-teal-500/40 dark:hover:border-teal-400/40 transition-all duration-300">
       <div>
         {/* Article Featured Image */}
         <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
@@ -20,7 +35,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
             loading="lazy"
           />
           <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 rounded-md text-xs font-bold bg-slate-900/85 text-teal-300 backdrop-blur-md border border-white/10">
+            <span className={`px-3 py-1 rounded-lg text-xs font-bold backdrop-blur-md border shadow-md ${getCategoryBadgeStyle(article.category)}`}>
               {article.category}
             </span>
           </div>

@@ -17,9 +17,6 @@ export const Footer: React.FC = () => {
               <span className="text-2xl font-extrabold tracking-tight text-white">
                 shamirpet<span className="text-teal-400">.city</span>
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/30">
-                ORR Exit 7
-              </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               The local journal and business directory built for Shamirpet, by Shamirpet — covering Genome Valley jobs, real estate growth on ORR Exit 7, Shamirpet Lake, and verified local businesses.
