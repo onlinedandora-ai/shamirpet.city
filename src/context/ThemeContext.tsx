@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark';
-type SwitcherStyle = 'pill' | 'glass-dropdown' | 'floating-bar';
+export type Theme = 'light' | 'dark';
+export type DarkColorPreset = 'midnight' | 'violet' | 'gold' | 'emerald';
 
 interface ThemeContextType {
   theme: Theme;
+  darkPreset: DarkColorPreset;
   setTheme: (theme: Theme) => void;
+  setDarkPreset: (preset: DarkColorPreset) => void;
   toggleTheme: () => void;
-  switcherStyle: SwitcherStyle;
-  setSwitcherStyle: (style: SwitcherStyle) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -20,20 +20,34 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
-  const [switcherStyle, setSwitcherStyle] = useState<SwitcherStyle>('pill');
+  const [darkPreset, setDarkPresetState] = useState<DarkColorPreset>(() => {
+    const savedPreset = localStorage.getItem('shamirpet_dark_preset') as DarkColorPreset;
+    return savedPreset || 'midnight';
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-dark-color', darkPreset);
+    
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
     localStorage.setItem('shamirpet_theme', theme);
-  }, [theme]);
+    localStorage.setItem('shamirpet_dark_preset', darkPreset);
+  }, [theme, darkPreset]);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
+  };
+
+  const setDarkPreset = (preset: DarkColorPreset) => {
+    setDarkPresetState(preset);
+    if (theme !== 'dark') {
+      setThemeState('dark');
+    }
   };
 
   const toggleTheme = () => {
@@ -41,7 +55,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, switcherStyle, setSwitcherStyle }}>
+    <ThemeContext.Provider value={{ theme, darkPreset, setTheme, setDarkPreset, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

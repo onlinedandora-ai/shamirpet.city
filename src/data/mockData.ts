@@ -36,7 +36,7 @@ export interface JournalArticle {
   id: string;
   title: string;
   slug: string;
-  category: 'Real Estate' | 'Civic' | 'Education' | 'Industry & Economy';
+  category: 'Real Estate' | 'Civic' | 'Education' | 'Industry & Economy' | 'Community News';
   targetKeyword: string;
   dek: string;
   readTime: string;
@@ -50,11 +50,15 @@ export interface JournalArticle {
   toc: { id: string; title: string }[];
   contentHtml: string;
   keyTakeaways: string[];
+  tags?: string[];
+  isFeatured?: boolean;
   dandoraLink?: {
     text: string;
     url: string;
   };
 }
+
+export type BlogPost = JournalArticle;
 
 export interface NewsItem {
   id: string;
@@ -293,6 +297,8 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
     title: "Why Shamirpet is becoming Hyderabad's bio-pharma-and-lifestyle corridor",
     slug: 'why-shamirpet-is-becoming-hyderabads-bio-pharma-and-lifestyle-corridor',
     category: 'Real Estate',
+    isFeatured: true,
+    tags: ['Real Estate', 'Genome Valley', 'ORR Exit 7', 'Growth Corridor'],
     targetKeyword: 'Shamirpet real estate',
     dek: 'Genome Valley is turning a lakeside town on ORR Exit 7 into one of the north corridor\'s most closely watched addresses.',
     readTime: '6 min read',
@@ -474,9 +480,112 @@ export const JOURNAL_ARTICLES: JournalArticle[] = [
           </tbody>
         </table>
       </div>
+    `,
+    tags: ['NALSAR', 'BITS Pilani', 'Education', 'Shamirpet Campuses']
+  },
+  {
+    id: 'j-4',
+    title: 'Genome Valley Phase 3 Expansion: Key Job Trends & Infrastructure Upgrades',
+    slug: 'genome-valley-phase-3-expansion-jobs-and-infrastructure',
+    category: 'Industry & Economy',
+    targetKeyword: 'Genome Valley jobs Shamirpet',
+    dek: 'Telangana life-sciences hub adds 300+ acres of R&D space in Shamirpet, creating 8,000+ new high-skilled biotech careers by late 2026.',
+    readTime: '7 min read',
+    publishDate: 'July 21, 2026',
+    author: {
+      name: 'Dr. Priya Nambiar',
+      role: 'Biotech & Economic Affairs Analyst',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80'
+    },
+    featuredImage: '/images/genome_valley.png',
+    toc: [
+      { id: 'phase3-overview', title: 'Phase 3 Campus Masterplan' },
+      { id: 'job-creation', title: 'Talent Acquisition & Salary Benchmarks' },
+      { id: 'housing-impact', title: 'Impact on Nearby Residential Rental Demand' }
+    ],
+    keyTakeaways: [
+      'Phase 3 expansion adds over 300 acres of specialized biomanufacturing and research laboratories in the Shamirpet cluster.',
+      'Key hiring sectors include biologics, contract research, vaccine formulation, and clinical data management.',
+      'Rental demand for 2BHK and 3BHK gated apartments near Exit 7 has surged by 18% year-over-year.'
+    ],
+    tags: ['Biotech', 'Genome Valley', 'Economy', 'Jobs'],
+    contentHtml: `
+      <p class="lead">Hyderabad's status as the <strong>Vaccine Capital of the World</strong> receives a significant boost as Phase 3 of the Genome Valley masterplan accelerates near Shamirpet. The 300-acre extension brings cutting-edge wet labs, formulation plants, and green R&D campuses.</p>
+
+      <h2 id="phase3-overview">Phase 3 Campus Masterplan</h2>
+      <p>Designed with zero-liquid-discharge infrastructure and specialized power grids, Phase 3 caters to multinational biopharmaceutical enterprises expanding their footprint in South Asia.</p>
+
+      <h2 id="job-creation">Talent Acquisition & Salary Benchmarks</h2>
+      <p>Over 8,000 direct life-sciences positions are projected across R&D, clinical trial operations, quality assurance, and biomanufacturing facility management over the next 18 months.</p>
+
+      <h2 id="housing-impact">Impact on Nearby Residential Rental Demand</h2>
+      <p>With thousands of senior researchers relocating to Shamirpet, residential communities around Lake Circle and Majeedpur are witnessing historical peak occupancy rates.</p>
+    `
+  },
+  {
+    id: 'j-5',
+    title: '2026 Shamirpet Civic Upgrades: Streetlights, Water Supply & Traffic Corridors',
+    slug: '2026-shamirpet-civic-upgrades-streetlights-water-and-traffic',
+    category: 'Community News',
+    targetKeyword: 'Shamirpet civic updates',
+    dek: 'HMDA and Medchal district administration approve ₹45 Cr infrastructure package for ORR Exit 7 service roads and smart street illumination.',
+    readTime: '4 min read',
+    publishDate: 'July 22, 2026',
+    author: {
+      name: 'Rajesh Kumar',
+      role: 'Community & Municipal Desk',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80'
+    },
+    featuredImage: '/images/orr_exit7.png',
+    toc: [
+      { id: 'civic-package', title: '₹45 Cr Civic Infrastructure Allocation' },
+      { id: 'service-lane', title: 'Exit 7 Service Road Expansion' },
+      { id: 'water-grid', title: 'Mission Bhagiratha Water Line Integration' }
+    ],
+    keyTakeaways: [
+      '₹45 Cr municipal grant deployed for public illumination, stormwater drains, and arterial road widening.',
+      'ORR Exit 7 service road to receive LED smart poles and automated traffic monitoring sensors by Q4 2026.',
+      'Enhanced municipal water supply connections rolled out across Majeedpur, Ponnal, and Lake Circle areas.'
+    ],
+    tags: ['Civic', 'Infrastructure', 'HMDA', 'Traffic'],
+    contentHtml: `
+      <p class="lead">Resident welfare associations and commercial owners in Shamirpet have welcomed the latest civic infrastructure package announced by municipal authorities. The ₹45 Cr grant aims to modernize arterial roads connecting Exit 7 to Genome Valley.</p>
+
+      <h2 id="civic-package">₹45 Cr Civic Infrastructure Allocation</h2>
+      <p>The funds will be deployed towards storm drain construction, central median greening, and solar-powered LED streetlights along major transit corridors.</p>
+
+      <h2 id="service-lane">Exit 7 Service Road Expansion</h2>
+      <p>Service lanes flanking the Outer Ring Road will be widened to 4 lanes with designated pedestrian walkways and bicycle lanes leading toward Shamirpet Lake.</p>
+
+      <h2 id="water-grid">Mission Bhagiratha Water Line Integration</h2>
+      <p>Dedicated pipeline expansion guarantees 24/7 treated drinking water supply to rapidly growing residential layouts across the Medchal-Malkajgiri corridor.</p>
     `
   }
 ];
+
+export const BLOG_POSTS: BlogPost[] = JOURNAL_ARTICLES;
+
+export function getAllBlogPosts(): BlogPost[] {
+  return JOURNAL_ARTICLES;
+}
+
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return JOURNAL_ARTICLES.find(article => article.slug === slug);
+}
+
+export function getRelatedBlogPosts(currentSlug: string, limit: number = 3): BlogPost[] {
+  const current = getBlogPostBySlug(currentSlug);
+  if (!current) return JOURNAL_ARTICLES.slice(0, limit);
+
+  const sameCategory = JOURNAL_ARTICLES.filter(
+    a => a.slug !== currentSlug && a.category === current.category
+  );
+  const otherCategory = JOURNAL_ARTICLES.filter(
+    a => a.slug !== currentSlug && a.category !== current.category
+  );
+
+  return [...sameCategory, ...otherCategory].slice(0, limit);
+}
 
 export const COMMUNITY_NEWS: NewsItem[] = [
   {

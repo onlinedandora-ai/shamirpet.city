@@ -4,7 +4,7 @@ import { NETWORK_SITES } from '../data/mockData';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="py-12 bg-white dark:bg-slate-900 min-h-screen transition-colors duration-300">
+    <div className="py-12 bg-white dark:bg-slate-950 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
         
         {/* Header */}
@@ -38,7 +38,7 @@ export const AboutPage: React.FC = () => {
             By delivering factual, high-intent coverage of land pricing, Genome Valley corporate demand, and transit infrastructure, shamirpet.city provides transparent value for home buyers and real estate developers alike.
           </p>
 
-          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 my-6">
+          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 my-6">
             <h3 className="font-bold text-teal-600 dark:text-teal-400 text-sm mb-2">Editorial Guidelines</h3>
             <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
               <li>• <strong>Verifiable Facts:</strong> All land pricing and infrastructure metrics are verified locally.</li>
@@ -60,13 +60,13 @@ export const AboutPage: React.FC = () => {
                 href={site.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 hover:border-teal-500 transition-colors group flex items-center justify-between"
+                className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-teal-500 transition-colors group flex items-center justify-between"
               >
                 <div>
-                  <div className="font-bold text-slate-900 dark:text-white group-hover:text-teal-500 text-sm">
+                  <div className="font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 text-sm">
                     {site.name}
                   </div>
-                  <div className="text-xs text-slate-500">
+                  <div className="text-xs text-slate-500 dark:text-slate-400">
                     {site.tagline}
                   </div>
                 </div>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { HomePage } from './pages/HomePage';
 import { DirectoryPage } from './pages/DirectoryPage';
 import { JournalIndexPage } from './pages/JournalIndexPage';
@@ -25,74 +27,81 @@ export function App() {
   const [selectedListing, setSelectedListing] = useState<DirectoryListing | null>(null);
 
   return (
-    <ThemeProvider>
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
-          
-          <Navbar
-            onOpenSearch={() => setIsSearchOpen(true)}
-            onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
-          />
+    <AuthProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 relative transition-colors duration-300">
+            
+            <Navbar
+              onOpenSearch={() => setIsSearchOpen(true)}
+              onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
+            />
 
-          <main className="flex-grow">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <HomePage
-                    onSelectListing={(listing) => setSelectedListing(listing)}
-                    onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
-                  />
-                }
-              />
-              <Route
-                path="/directory"
-                element={
-                  <DirectoryPage
-                    onSelectListing={(listing) => setSelectedListing(listing)}
-                    onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
-                  />
-                }
-              />
-              <Route path="/journal" element={<JournalIndexPage />} />
-              <Route path="/journal/:slug" element={<JournalArticlePage />} />
-              <Route
-                path="/news"
-                element={<NewsPage onOpenSubmitNews={() => setIsSubmitNewsOpen(true)} />}
-              />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/advertise" element={<AdvertisePage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </main>
+            <main className="flex-grow pb-16 md:pb-0">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <HomePage
+                      onSelectListing={(listing) => setSelectedListing(listing)}
+                      onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
+                    />
+                  }
+                />
+                <Route
+                  path="/directory"
+                  element={
+                    <DirectoryPage
+                      onSelectListing={(listing) => setSelectedListing(listing)}
+                      onOpenSubmitListing={() => setIsSubmitListingOpen(true)}
+                    />
+                  }
+                />
+                <Route path="/blog" element={<JournalIndexPage />} />
+                <Route path="/blog/:slug" element={<JournalArticlePage />} />
+                <Route path="/journal" element={<JournalIndexPage />} />
+                <Route path="/journal/:slug" element={<JournalArticlePage />} />
+                <Route
+                  path="/news"
+                  element={<NewsPage onOpenSubmitNews={() => setIsSubmitNewsOpen(true)} />}
+                />
+                <Route path="/events" element={<EventsPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/advertise" element={<AdvertisePage />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            </main>
 
-          <Footer />
+            <Footer />
 
-          {/* Dialog Modals */}
-          <SearchModal
-            isOpen={isSearchOpen}
-            onClose={() => setIsSearchOpen(false)}
-          />
+            {/* Mobile Bottom Navigation Bar (4 Clean Items) */}
+            <MobileBottomNav />
 
-          <SubmitListingModal
-            isOpen={isSubmitListingOpen}
-            onClose={() => setIsSubmitListingOpen(false)}
-          />
+            {/* Dialog Modals */}
+            <SearchModal
+              isOpen={isSearchOpen}
+              onClose={() => setIsSearchOpen(false)}
+            />
 
-          <SubmitNewsModal
-            isOpen={isSubmitNewsOpen}
-            onClose={() => setIsSubmitNewsOpen(false)}
-          />
+            <SubmitListingModal
+              isOpen={isSubmitListingOpen}
+              onClose={() => setIsSubmitListingOpen(false)}
+            />
 
-          <ListingDetailModal
-            listing={selectedListing}
-            onClose={() => setSelectedListing(null)}
-          />
+            <SubmitNewsModal
+              isOpen={isSubmitNewsOpen}
+              onClose={() => setIsSubmitNewsOpen(false)}
+            />
 
-        </div>
-      </BrowserRouter>
-    </ThemeProvider>
+            <ListingDetailModal
+              listing={selectedListing}
+              onClose={() => setSelectedListing(null)}
+            />
+
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

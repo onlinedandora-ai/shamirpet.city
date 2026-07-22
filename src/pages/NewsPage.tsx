@@ -22,7 +22,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
   );
 
   return (
-    <div className="py-12 bg-slate-50/50 dark:bg-slate-900/40 min-h-screen transition-colors duration-300">
+    <div className="py-12 bg-white dark:bg-slate-950 min-h-screen transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
         
         {/* Header */}
@@ -35,7 +35,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Shamirpet Local News Feed
             </h1>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
               Factual, verified civic updates, transit notices, and environmental news submitted by local residents and business owners.
             </p>
           </div>
@@ -57,8 +57,8 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
               onClick={() => setSelectedCat(cat)}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                 selectedCat === cat
-                  ? 'bg-teal-600 text-white'
-                  : 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800'
+                  ? 'bg-teal-600 text-white shadow-sm'
+                  : 'bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
             >
               {cat}
@@ -71,7 +71,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
           {filteredNews.map(item => (
             <div
               key={item.id}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-start justify-between gap-4 card-hover-effect"
+              className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-start justify-between gap-4 hover:border-teal-500/50 transition-all duration-200"
             >
               <div className="space-y-2 flex-1">
                 <div className="flex items-center gap-2 text-xs">
@@ -83,7 +83,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
                       <CheckCircle2 className="w-3.5 h-3.5" /> Verified Update
                     </span>
                   )}
-                  <span className="text-slate-400">• {item.date}</span>
+                  <span className="text-slate-400 dark:text-slate-400">• {item.date}</span>
                 </div>
 
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
@@ -94,14 +94,14 @@ export const NewsPage: React.FC<NewsPageProps> = ({ onOpenSubmitNews }) => {
                   {item.summary}
                 </p>
 
-                <div className="text-[11px] text-slate-400 pt-1">
+                <div className="text-[11px] text-slate-400 dark:text-slate-400 pt-1">
                   Reported by: <span className="font-semibold text-slate-700 dark:text-slate-300">{item.submittedBy}</span>
                 </div>
               </div>
 
               <button
                 onClick={() => handleUpvote(item.id)}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-teal-500/20 text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 text-xs font-bold transition-all cursor-pointer self-start sm:self-center"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-teal-700 text-xs font-bold transition-all cursor-pointer self-start sm:self-center"
               >
                 <ThumbsUp className="w-4 h-4 text-teal-500" />
                 <span>{item.upvotes} Upvotes</span>
