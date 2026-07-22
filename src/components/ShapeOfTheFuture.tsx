@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Sparkles, Building2, MapPin, ArrowRight } from 'lucide-react';
+import { Compass, Trees, Building2, MapPin, ArrowRight } from 'lucide-react';
 
 interface ShapeOfTheFutureProps {
   onOpenSubmitListing?: () => void;
@@ -56,7 +56,7 @@ export const ShapeOfTheFuture: React.FC<ShapeOfTheFutureProps> = ({ onOpenSubmit
 
           <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 space-y-3 shadow-sm hover:shadow-md transition-all">
             <div className="p-2.5 rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400 w-fit">
-              <Sparkles className="w-5 h-5" />
+              <Trees className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">Lake Rejuvenation & Eco-Park</h3>
             <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HIGHLIGHTS } from '../data/mockData';
 import type { HighlightItem } from '../data/mockData';
-import { Compass, ArrowRight, MapPin, Sparkles, X, BookOpen } from 'lucide-react';
+import { Compass, ArrowRight, MapPin, X, BookOpen } from 'lucide-react';
 
 export const HighlightsGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -154,7 +154,7 @@ export const HighlightsGrid: React.FC = () => {
             {/* Modal Content */}
             <div className="p-6 overflow-y-auto space-y-4">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
-                <Sparkles className="w-3.5 h-3.5" />
+                <Compass className="w-3.5 h-3.5" />
                 <span>{activeModalItem.tag}</span>
               </div>
 
